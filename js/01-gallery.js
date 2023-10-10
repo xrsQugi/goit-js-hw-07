@@ -1,26 +1,25 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
+console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 gallery.addEventListener('click', onImgClick);
 
-galleryItems.forEach((galleryItem) => {
+galleryItems.forEach(({ original, preview, description }) => {
   gallery.insertAdjacentHTML(
     "afterbegin",
     `<li class="gallery__item">
-            <a class="gallery__link" href=${galleryItem.original}>
+            <a class="gallery__link" href=${original}>
                 <img
                     class="gallery__image"
-                    src=${galleryItem.preview}
-                    data-source=${galleryItem.original}
-                    alt=${galleryItem.description}
+                    src=${preview}
+                    data-source=${original}
+                    alt=${description}
                 />
             </a>
         </li>`
   );
 });
-
-console.log(galleryItems);
 
 const instance = basicLightbox.create(
   `
